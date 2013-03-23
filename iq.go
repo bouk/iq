@@ -3,11 +3,11 @@ package iq
 // SliceIQ creates an infinite buffered channel taking input on
 // in and sending output to next.  SliceIQ should be run in its
 // own goroutine.
-func SliceIQ(in <-chan Type, next chan<- Type) {
+func SliceIQ(in <-chan String, next chan<- String) {
 	defer close(next)
 
 	// pending events (this is the "infinite" part)
-	pending := []Type{}
+	pending := []String{}
 
 recv:
 	for {
