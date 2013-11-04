@@ -68,7 +68,8 @@ recv:
 			heap.Push(pending, v)
 
 		// Send queued values
-		case next <- heap.Pop(pending).(Object).Value:
+		case next <- (*pending)[len(*pending)-1].Value:
+			heap.Pop(pending)
 		}
 	}
 
